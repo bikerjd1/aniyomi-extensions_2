@@ -198,7 +198,7 @@ class Hackstore : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
     private val doodExtractor by lazy { DoodExtractor(client) }
     private val vidHideExtractor by lazy { VidHideExtractor(client, headers) }
     private val goodStreamExtractor by lazy { GoodStreamExtractor(client, headers) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     override fun videoListParse(response: Response): List<Video> {
         val document = response.asJsoup()

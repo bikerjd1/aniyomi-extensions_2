@@ -103,7 +103,7 @@ class AnimeFlv : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
     private val okruExtractor by lazy { OkruExtractor(client) }
     private val yourUploadExtractor by lazy { YourUploadExtractor(client) }
     private val streamWishExtractor by lazy { StreamWishExtractor(client, headers.newBuilder().add("Referer", "$baseUrl/").build()) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     override fun videoListParse(response: Response): List<Video> {
         val document = response.asJsoup()

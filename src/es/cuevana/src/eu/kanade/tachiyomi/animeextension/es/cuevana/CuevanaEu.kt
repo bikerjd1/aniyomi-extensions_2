@@ -213,7 +213,7 @@ class CuevanaEu(override val name: String, override val baseUrl: String) : Confi
                 videoList
             }
             else -> {
-                UniversalExtractor(client).videosFromUrl(url, headers, prefix = prefix).also(videoList::addAll)
+                UniversalExtractor(client, preferences).videosFromUrl(url, headers, prefix = prefix).also(videoList::addAll)
                 videoList
             }
         }

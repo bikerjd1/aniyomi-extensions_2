@@ -187,7 +187,7 @@ class Gnula : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
             embedUrl.contains("upstream") -> UpstreamExtractor(client).videosFromUrl(url, prefix = prefix)
             embedUrl.contains("streamtape") || embedUrl.contains("stp") || embedUrl.contains("stape") -> listOf(StreamTapeExtractor(client).videoFromUrl(url, quality = "$prefix StreamTape")!!)
             embedUrl.contains("ahvsh") || embedUrl.contains("streamhide") || embedUrl.contains("guccihide") || embedUrl.contains("streamvid") -> StreamHideVidExtractor(client, headers).videosFromUrl(url, videoNameGen = { "$prefix StreamHideVid:$it" })
-            else -> UniversalExtractor(client).videosFromUrl(url, headers, prefix = prefix)
+            else -> UniversalExtractor(client, preferences).videosFromUrl(url, headers, prefix = prefix)
         }
     }
 

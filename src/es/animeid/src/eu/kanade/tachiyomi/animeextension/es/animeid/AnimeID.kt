@@ -116,7 +116,7 @@ class AnimeID : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
     // ============================ Video Links =============================
     private val streamwishExtractor by lazy { StreamWishExtractor(client, headers) }
     private val streamtapeExtractor by lazy { StreamTapeExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     override fun videoListParse(response: Response): List<Video> {
         val document = response.asJsoup()

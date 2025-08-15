@@ -46,7 +46,7 @@ class AnimeYTES : AnimeStream(
     private val youruploadExtractor by lazy { YourUploadExtractor(client) }
     private val burstcloudExtractor by lazy { BurstCloudExtractor(client) }
     private val filemoonExtractor by lazy { FilemoonExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     override fun getVideoList(url: String, name: String): List<Video> {
         return when (name) {

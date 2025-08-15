@@ -89,7 +89,7 @@ class Zeroanime : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
     override fun episodeFromElement(element: Element) = throw UnsupportedOperationException()
 
     /*--------------------------------Video extractors------------------------------------*/
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
     private val streamtapeExtractor by lazy { StreamTapeExtractor(client) }
     private val fileMoonExtractor by lazy { FilemoonExtractor(client) }
     private val mp4UploadExtractor by lazy { Mp4uploadExtractor(client) }

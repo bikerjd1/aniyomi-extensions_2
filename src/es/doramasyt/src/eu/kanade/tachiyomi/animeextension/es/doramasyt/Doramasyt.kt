@@ -186,7 +186,7 @@ class Doramasyt : ConfigurableAnimeSource, AnimeHttpSource() {
     private val streamTapeExtractor by lazy { StreamTapeExtractor(client) }
     private val uqloadExtractor by lazy { UqloadExtractor(client) }
     private val okruExtractor by lazy { OkruExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     private fun serverVideoResolver(url: String): List<Video> {
         val embedUrl = url.lowercase()

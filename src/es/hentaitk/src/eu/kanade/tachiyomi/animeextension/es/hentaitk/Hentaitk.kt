@@ -137,7 +137,7 @@ class Hentaitk : ConfigurableAnimeSource, AnimeHttpSource() {
     private val streamHideVidExtractor by lazy { StreamHideVidExtractor(client, headers) }
     private val doodExtractor by lazy { DoodExtractor(client) }
     private val streamTapeExtractor by lazy { StreamTapeExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     private fun serverVideoResolver(url: String): List<Video> {
         val embedUrl = url.lowercase()

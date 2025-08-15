@@ -128,7 +128,7 @@ class Animefenix : ConfigurableAnimeSource, AnimeHttpSource() {
     }
 
     /*-------------------------------- Video extractors ------------------------------------*/
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
     private val voeExtractor by lazy { VoeExtractor(client) }
     private val okruExtractor by lazy { OkruExtractor(client) }
     private val filemoonExtractor by lazy { FilemoonExtractor(client) }

@@ -253,7 +253,7 @@ open class MhdFlix : AnimeHttpSource(), ConfigurableAnimeSource {
     private val doodExtractor by lazy { DoodExtractor(client) }
     private val streamWishExtractor by lazy { StreamWishExtractor(client, headers) }
     private val mixDropExtractor by lazy { MixDropExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     private fun serverVideoResolver(url: String, prefix: String = ""): List<Video> {
         val embedUrl = url.lowercase()

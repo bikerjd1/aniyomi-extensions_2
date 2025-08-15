@@ -174,7 +174,7 @@ class CineCalidad : ConfigurableAnimeSource, ParsedAnimeHttpSource() {
                 embedUrl.contains("streamtape") || embedUrl.contains("stp") || embedUrl.contains("stape") -> listOf(StreamTapeExtractor(client).videoFromUrl(url, quality = "StreamTape")!!)
                 embedUrl.contains("ahvsh") || embedUrl.contains("streamhide") || embedUrl.contains("guccihide") || embedUrl.contains("streamvid") || embedUrl.contains("vidhide") -> StreamHideVidExtractor(client, headers).videosFromUrl(url)
                 embedUrl.contains("goodstream") -> GoodStreamExtractor(client, headers).videosFromUrl(url, name = "GoodStream: ")
-                else -> UniversalExtractor(client).videosFromUrl(url, headers)
+                else -> UniversalExtractor(client, preferences).videosFromUrl(url, headers)
             }
         }.getOrNull() ?: emptyList()
     }

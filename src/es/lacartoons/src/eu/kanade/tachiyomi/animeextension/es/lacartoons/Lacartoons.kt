@@ -143,7 +143,7 @@ class Lacartoons : ConfigurableAnimeSource, AnimeHttpSource() {
                 embedUrl.contains("guccihide") || embedUrl.contains("streamvid") -> StreamHideVidExtractor(client, headers).videosFromUrl(url)
             embedUrl.contains("voe") -> VoeExtractor(client).videosFromUrl(url)
             embedUrl.contains("yourupload") || embedUrl.contains("upload") -> YourUploadExtractor(client).videoFromUrl(url, headers = headers)
-            else -> UniversalExtractor(client).videosFromUrl(url, headers)
+            else -> UniversalExtractor(client, preferences).videosFromUrl(url, headers)
         }
     }
 

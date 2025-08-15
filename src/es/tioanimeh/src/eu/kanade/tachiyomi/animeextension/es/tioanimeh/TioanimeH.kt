@@ -90,7 +90,7 @@ open class TioanimeH(override val name: String, override val baseUrl: String) : 
     private val okruExtractor by lazy { OkruExtractor(client) }
     private val yourUploadExtractor by lazy { YourUploadExtractor(client) }
     private val mixDropExtractor by lazy { MixDropExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     override fun videoListParse(response: Response): List<Video> {
         val document = response.asJsoup()

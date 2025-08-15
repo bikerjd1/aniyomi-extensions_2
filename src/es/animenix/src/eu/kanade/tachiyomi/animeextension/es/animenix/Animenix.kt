@@ -65,7 +65,7 @@ class Animenix : DooPlay(
 
     private val filemoonExtractor by lazy { FilemoonExtractor(client) }
     private val streamWishExtractor by lazy { StreamWishExtractor(headers = headers, client = client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     private fun getPlayerVideos(link: String): List<Video> {
         return when {

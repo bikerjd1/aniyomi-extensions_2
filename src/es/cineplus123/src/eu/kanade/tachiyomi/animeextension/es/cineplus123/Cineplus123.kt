@@ -40,7 +40,7 @@ class Cineplus123 : DooPlay(
 
     private val uqloadExtractor by lazy { UqloadExtractor(client) }
     private val streamWishExtractor by lazy { StreamWishExtractor(client, headers) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     // ============================ Video Links =============================
     override fun videoListParse(response: Response): List<Video> {

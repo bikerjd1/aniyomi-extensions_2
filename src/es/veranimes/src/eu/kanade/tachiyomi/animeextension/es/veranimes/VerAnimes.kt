@@ -161,7 +161,7 @@ class VerAnimes : ConfigurableAnimeSource, AnimeHttpSource() {
     private val voeExtractor by lazy { VoeExtractor(client) }
     private val yourUploadExtractor by lazy { YourUploadExtractor(client) }
     private val vidGuardExtractor by lazy { VidGuardExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     private fun serverVideoResolver(url: String): List<Video> {
         return when {

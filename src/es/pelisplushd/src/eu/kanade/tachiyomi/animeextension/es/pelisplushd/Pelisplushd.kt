@@ -181,7 +181,7 @@ open class Pelisplushd(override val name: String, override val baseUrl: String) 
     private val vidHideExtractor by lazy { VidHideExtractor(client, headers) }
     private val streamSilkExtractor by lazy { StreamSilkExtractor(client) }
     private val vidGuardExtractor by lazy { VidGuardExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     fun serverVideoResolver(url: String, prefix: String = "", serverName: String? = ""): List<Video> {
         return runCatching {

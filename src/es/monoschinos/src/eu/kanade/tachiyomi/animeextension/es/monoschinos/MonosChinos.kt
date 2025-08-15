@@ -187,7 +187,7 @@ class MonosChinos : ConfigurableAnimeSource, AnimeHttpSource() {
     private val uqloadExtractor by lazy { UqloadExtractor(client) }
     private val okruExtractor by lazy { OkruExtractor(client) }
     private val mp4uploadExtractor by lazy { Mp4uploadExtractor(client) }
-    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
 
     private fun serverVideoResolver(url: String): List<Video> {
         val embedUrl = url.lowercase()
