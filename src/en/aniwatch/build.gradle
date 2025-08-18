@@ -3,7 +3,11 @@ ext {
     extClass = '.AniWatchtv'
     themePkg = 'zorotheme'
     baseUrl = 'https://aniwatchtv.to'
-    overrideVersionCode = 5
+    overrideVersionCode = 8
 }
 
 apply from: "$rootDir/common.gradle"
+
+dependencies {
+    api(project(":lib:megacloud-extractor"))
+}

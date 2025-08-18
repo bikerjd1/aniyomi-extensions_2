@@ -1,6 +1,5 @@
 package eu.kanade.tachiyomi.animeextension.es.animelatinohd
 
-import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceScreen
 import eu.kanade.tachiyomi.animeextension.es.animelatinohd.extractors.SolidFilesExtractor
@@ -27,7 +26,6 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import okhttp3.CookieJar
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Request
 import okhttp3.Response
@@ -47,10 +45,6 @@ class AnimeLatinoHD : ConfigurableAnimeSource, AnimeHttpSource() {
 
     private val preferences by getPreferencesLazy()
 
-    override val client = network.cloudflareClient.newBuilder()
-        .cookieJar(CookieJar.NO_COOKIES)
-        .build()
-
     companion object {
         const val PREF_QUALITY_KEY = "preferred_quality"
         const val PREF_QUALITY_DEFAULT = "1080"
@@ -68,17 +62,7 @@ class AnimeLatinoHD : ConfigurableAnimeSource, AnimeHttpSource() {
         private const val PREF_LANGUAGE_KEY = "preferred_language"
         private const val PREF_LANGUAGE_DEFAULT = "[LAT]"
         private val LANGUAGE_LIST = arrayOf("[LAT]", "[SUB]")
-
-        private const val PREF_COOKIES_KEY = "custom_cookies"
-        private const val PREF_COOKIES_DEFAULT = ""
     }
-
-    private val customCookies: String
-        get() = preferences.getString(PREF_COOKIES_KEY, PREF_COOKIES_DEFAULT)!!
-
-    override fun headersBuilder() = super.headersBuilder()
-        .add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36")
-        .add("Cookie", customCookies)
 
     override fun popularAnimeRequest(page: Int): Request = GET("$baseUrl/animes/populares")
 
@@ -440,17 +424,6 @@ class AnimeLatinoHD : ConfigurableAnimeSource, AnimeHttpSource() {
                 val index = findIndexOfValue(selected)
                 val entry = entryValues[index] as String
                 preferences.edit().putString(key, entry).commit()
-            }
-        }.also(screen::addPreference)
-
-        EditTextPreference(screen.context).apply {
-            key = PREF_COOKIES_KEY
-            title = "Cookies Personalizadas"
-            summary = "Pega aquí tus cookies en formato: cookie1=valor1; cookie2=valor2;"
-            setDefaultValue(PREF_COOKIES_DEFAULT)
-
-            setOnPreferenceChangeListener { _, newValue ->
-                preferences.edit().putString(key, newValue as String).commit()
             }
         }.also(screen::addPreference)
     }

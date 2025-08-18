@@ -221,8 +221,8 @@ class Otakuverso : ConfigurableAnimeSource, AnimeHttpSource() {
     override fun getFilterList(): AnimeFilterList = OtakuversoFilters.FILTER_LIST
 
     /*-------------------------------- Video extractors ------------------------------------*/
-    private val universalExtractor by lazy { UniversalExtractor(client, preferences) }
-    private val voeExtractor by lazy { VoeExtractor(client) }
+    private val universalExtractor by lazy { UniversalExtractor(client) }
+    private val voeExtractor by lazy { VoeExtractor(client, headers) }
     private val okruExtractor by lazy { OkruExtractor(client) }
     private val filemoonExtractor by lazy { FilemoonExtractor(client) }
     private val uqloadExtractor by lazy { UqloadExtractor(client) }
