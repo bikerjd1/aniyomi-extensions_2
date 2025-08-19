@@ -1,7 +1,7 @@
 ext {
     extName = 'AnimeAV1'
     extClass = '.AnimeAV1'
-    extVersionCode = 1
+    extVersionCode = 10
 }
 
 apply from: "$rootDir/common.gradle"
@@ -12,4 +12,16 @@ dependencies {
     implementation(project(':lib:okru-extractor'))
     implementation(project(':lib:streamwish-extractor'))
     implementation(project(':lib:universal-extractor'))
+    implementation(project(':lib:dood-extractor'))
+    implementation(project(':lib:filemoon-extractor'))
+    implementation(project(':lib:mp4upload-extractor'))
+    implementation(project(':lib:uqload-extractor'))
+    implementation(project(':lib:voe-extractor'))
+    implementation project(':lib-multisrc:dooplay')
+}
+android {
+    defaultConfig {
+        manifestPlaceholders["SOURCEHOST"] = "animeav1.com"
+        manifestPlaceholders["SOURCESCHEME"] = "https"
+    }
 }
